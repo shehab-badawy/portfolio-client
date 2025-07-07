@@ -1,0 +1,130 @@
+/* === Layout Container === */
+.achievement-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  margin: 4rem 2rem;
+  position: relative; /* Contains absolutely positioned nav buttons */
+}
+
+/* === Visual Display Area === */
+.visual-container {
+  width: 40%;
+  padding: 1.5rem;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 5px 5px 0 black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.visual-container .visual {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border: none;
+}
+
+/* === Details Panel === */
+.achievement-details {
+  width: 500px;
+  padding: 2rem;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  box-shadow: 5px 5px 0 black;
+  font-size: 1.3rem;
+}
+
+.achievement-details h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.achievement-details p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* === Vertical (Up/Down) Visual Buttons === */
+.visual-container button {
+  margin: 0.4rem 0;
+}
+
+/* === Global Button Style (Sketchy, Circular) === */
+button {
+  width: 40px;
+  height: 40px;
+  border: 2px solid black;
+  background: white;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1rem;
+  color: black;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.2s, color 0.2s;
+}
+
+button:hover {
+  background: black;
+  color: white;
+}
+
+/* === Horizontal Achievement Nav Buttons (Left/Right) === */
+.achievement-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6%;
+  max-width: 40px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: white;
+  color: black;
+  border: 2px solid black;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 2px 2px 0 black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* ✅ Use positive % to stay visible */
+.achievement-nav-button:first-of-type {
+  left: 2%;
+}
+
+.achievement-nav-button:last-of-type {
+  right: 2%;
+}
+
+
+@media (max-width: 768px) {
+  .achievement-nav-button {
+    width: 10%;
+  }
+
+  .achievement-nav-button:first-of-type {
+    left: -8%;
+  }
+
+  .achievement-nav-button:last-of-type {
+    right: -8%;
+  }
+}
+
