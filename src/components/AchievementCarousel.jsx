@@ -4,10 +4,18 @@ import BASE_URL from "../config";
 import "./AchievementCarousel.css";
 import VisualCarousel from "./VisualCarousel";
 
+import { useSwipeable } from 'react-swipeable';
+import useIsMobile from "../hooks/useIsMobile"; // 👈 create this hook if not yet
+
+
+
 export default function AchievementCarousel() {
   const [achievements, setAchievements] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visualIndex, setVisualIndex] = useState(0);
+  const [descVisible, setDescVisible] = useState(false);
+  const isMobile = useIsMobile(); // 👈 detect if mobile
+
 
   useEffect(() => {
     axios.get(`${BASE_URL}/api/achievements`) // adjust endpoint as needed
@@ -31,6 +39,15 @@ export default function AchievementCarousel() {
     setVisualIndex(0);
   };
 
+
+  const achievementSwipeHandlers = useSwipeable({
+  onSwipedLeft: handleNextAchievement,
+  onSwipedRight: handlePrevAchievement,
+  trackTouch: true,
+  preventScrollOnSwipe: true,
+});
+
+
   const handleNextVisual = () => {
     if (!current || !current.visuals) return;
     setVisualIndex((prev) => (prev + 1) % current.visuals.length);
@@ -42,37 +59,71 @@ export default function AchievementCarousel() {
   };
 
   if (!current) return <p>Loading...</p>;
-
-  const imgSrc = current.visuals?.[visualIndex]?.id?.visualLink?.replace(
-  /^server\//,
-  `${BASE_URL}/images/files/`
-);
-
-
-  console.log("Current achievement:", current.visuals);
 return (
-<div className="achievement-carousel-wrapper">
+
+<div className="achievement-carousel-wrapper" {...(isMobile ? achievementSwipeHandlers : {})}>
+       {isMobile && (
+    <p className="swipe-hint-horizontal">Swipe ◄ ► to view more projects</p>
+  )}
   <div className="achievement-carousel">
-    {/* ◄ Left Achievement */}
-    <button className="achievement-nav-button" onClick={handlePrevAchievement}>◄</button>
 
-    <div className="visual-container">
-      <button onClick={handlePrevVisual}>▲</button>
-      <VisualCarousel visualLink={current.visuals[visualIndex]?.id?.visualLink} />
-      <button onClick={handleNextVisual}>▼</button>
-    </div>
+    {/* ◄ Left Navigation */}
+    {!isMobile && (
+      <button className="achievement-nav-button" onClick={handlePrevAchievement}>
+        ◄
+      </button>
+    )}
 
+    {/* === Achievements Details FIRST === */}
     <div className="achievement-details">
       <h4>{current.type?.name}</h4>
       <h2>{current.name}</h2>
-      <p>{current.description}</p>
-      <p><b>Technologies:</b> {(current.technologies || []).map(t => t.name).join(", ")}</p>
+
+      {isMobile && (
+        <div className="toggle-row">
+          <button
+            className="toggle-button"
+            onClick={() => setDescVisible((prev) => !prev)}
+          >
+            {descVisible ? '−' : '+'}
+          </button>
+          <span className="toggle-label">
+            {descVisible ? "Hide Details" : "Show Details"}
+          </span>
+        </div>
+      )}
+
+      {/* Conditional Rendering Inside the Same Box */}
+      {(!isMobile || descVisible) && (
+        <>
+          <p>{current.description}</p>
+          <p><b>Technologies:</b> {(current.technologies || []).map(t => t.name).join(", ")}</p>
+        </>
+      )}
     </div>
 
-    {/* ► Right Achievement */}
-    <button className="achievement-nav-button" onClick={handleNextAchievement}>►</button>
+    {/* === Visual SECOND === */}
+<div className="visual-container">
+  {(current.visuals.length > 1 && !isMobile) && (
+    <button onClick={handlePrevVisual}>▲</button>
+  )}
+
+  <VisualCarousel visualLink={current.visuals[visualIndex]?.id?.visualLink} />
+
+  {(current.visuals.length > 1 && !isMobile) && (
+    <button onClick={handleNextVisual}>▼</button>
+  )}
+</div>
+
+    {/* ► Right Navigation */}
+        {!isMobile && (
+      <button className="achievement-nav-button" onClick={handleNextAchievement}>
+        ►
+      </button>
+    )}
   </div>
 </div>
+
 
 );
 

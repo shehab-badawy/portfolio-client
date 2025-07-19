@@ -1,7 +1,7 @@
 import React from "react";
 import BASE_URL from "../config";
 
-export default function VisualCarousel({ visualLink }) {
+function VisualCarousel({ visualLink }) {
   if (!visualLink) return null;
 
   const isYouTube = visualLink.includes("youtube.com") || visualLink.includes("youtu.be");
@@ -25,6 +25,7 @@ export default function VisualCarousel({ visualLink }) {
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
+        loading="lazy"
       />
     );
   }
@@ -36,6 +37,9 @@ export default function VisualCarousel({ visualLink }) {
       className="visual"
       src={imageLink}
       alt="Achievement visual"
+      loading="lazy"
     />
   );
 }
+
+export default React.memo(VisualCarousel);

@@ -5,17 +5,19 @@ import { Github, Linkedin, FileText, Menu } from "lucide-react";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const handleCloseMenu = () => setMenuOpen(false);
+
   const navLinks = (
     <>
-      <a href="#achievements" className="nav-link">Achievements</a>
-      <a href="#contact" className="nav-link">Contact</a>
-      <a href="https://www.linkedin.com/in/shehab-badawy/" target="_blank" rel="noreferrer" className="nav-link">
+      <a href="#achievements" className="nav-link" onClick={handleCloseMenu}>Achievements</a>
+      <a href="#contact" className="nav-link" onClick={handleCloseMenu}>Contact</a>
+      <a href="https://www.linkedin.com/in/shehab-badawy/" target="_blank" rel="noreferrer" className="nav-link" onClick={handleCloseMenu}>
         <Linkedin size={16} /> LinkedIn
       </a>
-      <a href="https://github.com/shehab-badawy" target="_blank" rel="noreferrer" className="nav-link">
+      <a href="https://github.com/shehab-badawy" target="_blank" rel="noreferrer" className="nav-link" onClick={handleCloseMenu}>
         <Github size={16} /> GitHub
       </a>
-      <a href="/resume.pdf" target="_blank" rel="noreferrer" className="nav-link">
+      <a href="/resume.pdf" target="_blank" rel="noreferrer" className="nav-link" onClick={handleCloseMenu}>
         <FileText size={16} /> Resume
       </a>
     </>

@@ -114,17 +114,160 @@ button:hover {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  .achievement-carousel {
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem 1rem;
+  }
+
+  .visual-container {
+    width: 100%;
+  }
+
+  .achievement-details {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  .achievement-details h2 {
+    font-size: 1.5rem;
+  }
+
+  .achievement-details p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
   .achievement-nav-button {
-    width: 10%;
+    position: static;
+    transform: none;
+    margin: 0.5rem;
   }
 
-  .achievement-nav-button:first-of-type {
-    left: -8%;
-  }
-
-  .achievement-nav-button:last-of-type {
-    right: -8%;
+  .achievement-carousel-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
+
+@media (max-width: 900px) {
+  .visual-container {
+    border-bottom: 2px solid black;
+  }
+}
+
+.toggle-description {
+  background: none;
+  border: 2px solid black;
+  font-family: monospace;
+  font-size: 1rem;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  margin: 1rem 0;
+  border-radius: 6px;
+  box-shadow: 2px 2px 0 black;
+}
+
+.toggle-description:hover {
+  background: black;
+  color: white;
+}
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+}
+
+.toggle-button {
+  width: 30px;
+  height: 30px;
+  font-size: 1.2rem;
+  border: 2px solid black;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.toggle-button:hover {
+  background: black;
+  color: white;
+}
+
+.toggle-label {
+  font-family: monospace;
+  font-size: 1rem;
+}
+
+@media (max-width: 900px) {
+  .achievement-nav-button {
+    display: none;
+  }
+}
+
+.swipe-hint-horizontal {
+  font-family: monospace;
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  color: #333;
+  opacity: 0.7;
+}
+
+@media (max-width: 900px) {
+  .achievement-carousel {
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem 1rem;
+  }
+
+  .visual-container {
+    width: 100%;
+    border-bottom: 2px solid black;
+  }
+
+  .achievement-details {
+    width: 100%;
+    padding: 0.75rem 1rem; /* Reduced padding */
+    font-size: 1rem;
+  }
+
+  .achievement-details h2 {
+    font-size: 1.3rem;
+    margin: 0.25rem 0;
+  }
+
+  .achievement-details h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .achievement-title-mobile {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+  }
+
+  .swipe-hint-horizontal {
+    font-family: monospace;
+    font-size: 0.85rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    opacity: 0.7;
+  }
+}

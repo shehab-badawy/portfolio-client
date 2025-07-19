@@ -62,3 +62,11 @@ html {
   gap: 4rem;
   position: relative;
 }
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'IBM Plex Mono', monospace;
+  margin-bottom: 1rem;
+}

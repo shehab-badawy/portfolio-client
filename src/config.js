@@ -1,4 +1,3 @@
-const BASE_URL = "http://64.23.153.150:8080";
-
+const BASE_URL = "https://shehabradwan.com/api";
 
 export default BASE_URL;

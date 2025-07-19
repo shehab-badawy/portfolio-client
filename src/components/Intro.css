@@ -69,3 +69,21 @@
   border: 2px solid black;
   box-shadow: 3px 3px 0 black;
 } */
+
+.see-more-btn {
+  margin-top: 1rem;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  font-family: 'IBM Plex Mono', monospace;
+  background: white;
+  border: 2px solid black;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 2px 2px 0 black;
+  transition: background 0.2s ease;
+}
+
+.see-more-btn:hover {
+  background: black;
+  color: white;
+}
