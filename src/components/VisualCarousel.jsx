@@ -37,7 +37,7 @@ function VisualCarousel({ visualLink }) {
       className="visual"
       src={imageLink}
       alt="Achievement visual"
-      loading="lazy"
+      // loading="lazy"
     />
   );
 }

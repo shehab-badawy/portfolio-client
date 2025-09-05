@@ -104,13 +104,13 @@ return (
 
     {/* === Visual SECOND === */}
 <div className="visual-container">
-  {(current.visuals.length > 1 && !isMobile) && (
+  {(current.visuals.length > 1) && (
     <button onClick={handlePrevVisual}>▲</button>
   )}
 
   <VisualCarousel visualLink={current.visuals[visualIndex]?.id?.visualLink} />
 
-  {(current.visuals.length > 1 && !isMobile) && (
+  {(current.visuals.length > 1) && (
     <button onClick={handleNextVisual}>▼</button>
   )}
 </div>
